@@ -19,7 +19,7 @@ const recipes = [
 
 	{
 		title: 'Cassava',
-		picture: './images/cassa.jpg',
+		picture: 'https://bit.ly/2CVMivO',
 		author: 'Noe',
 		difficulty: 'Medium',
 		timing: '30',
@@ -38,7 +38,7 @@ const recipes = [
 
 	{
 		title: 'Green Beans',
-		picture: './images/green-beans.jpg',
+		picture: 'https://bit.ly/3gjbnz1',
 		author: 'Jea',
 		difficulty: 'easy',
 		timing: '12',
@@ -54,7 +54,7 @@ const recipes = [
 	
 	{
 		title: 'Fish',
-		picture: './images/fish.jpg',
+		picture: 'https://bit.ly/3hTKwKl',
 		author: 'Marie',
 		difficulty: 'difficult',
 		timing: '40',
@@ -65,7 +65,7 @@ const recipes = [
 			'Put all the ingredieants you want with it',
 			'After 5 min on the fire pour litle water',
 		],
-		id: 3,
+		id: 4,
 	},
 ];
 
@@ -75,18 +75,19 @@ const renderCard = () => {
 	for (let i = 0; i < recipes.length; i++) {
 		// generate the HTML
 		const myHtml = `
-			<div class="content">
+			<div class="content" data-id="">
 				<h3>${recipes[i].title}<h3>
 				<img src="${recipes[i].picture}" alt="">
 				<p>${recipes[i].timing}</p>
 				<p>${recipes[i].difficulty}</p>
-				<button>More</button>
+				<button class="more-info">More info</button>
 			<div>
 		`;
 		// put it in the DOM
 		container.insertAdjacentHTML('beforeend', myHtml);
 	}
 };
+
 
 const generateButton = document.querySelector('button.generate');
 generateButton.addEventListener('click', renderCard);
