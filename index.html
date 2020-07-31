@@ -16,13 +16,50 @@
 				background-color: rgb(195, 193, 193);
 				padding: 2rem;
 				border-radius: 1rem;
+				text-align: left;
 			}
 			h1 {
 				text-align: center;
 			}
 			img {
 				width: 100%;
-				height: 400px;
+			}
+
+			button {
+				padding: 1rem;
+				border-radius: 10px;
+			}
+			.detail {
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+			}
+
+			.outer-modal {
+				display: grid;
+				place-items: center center;
+				background-color: hsla(0, 0%, 0%, 0.7);
+				pointer-events: none;
+				opacity: 0;
+				position: fixed;
+
+				top: 0;
+				left: 0;
+				height: 100vh;
+				width: 100vw;
+				overflow: scroll;
+			}
+
+			.outer-modal.open {
+				opacity: 1;
+				pointer-events: all;
+			}
+
+			.inner-modal {
+				background-color: white;
+				min-height: 400px;
+				min-width: 400px;
+				padding: 20px;
 			}
 		</style>
 	</head>
@@ -30,6 +67,9 @@
 		<h1>Onja cookbook</h1>
 		<div class="container"></div>
 		<button class="generate">GENERATE RECIPES</button>
+		<div class="outer-modal">
+			<div class="inner-modal"></div>
+		</div>
 	</body>
 	<script src="script.js"></script>
 </html>
