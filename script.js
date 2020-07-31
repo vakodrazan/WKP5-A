@@ -14,7 +14,7 @@ const recipes = [
 			'Crack the eggs on it',
 			'Wait, put them out',
 		],
-		id: 1,
+		id: 1596168482053,
 	},
 
 	{
@@ -33,7 +33,7 @@ const recipes = [
 			'Put sugar (exception)',
 			"Wait for it to be cooked"
 		],
-		id: 2,
+		id: 1596168522409,
 	},
 
 	{
@@ -49,7 +49,7 @@ const recipes = [
 			'Put it in the pot',
 			'Add some salt on it',
 		],
-		id: 3,
+		id: 1596168522419,
 	},
 	
 	{
@@ -65,7 +65,7 @@ const recipes = [
 			'Put all the ingredieants you want with it',
 			'After 5 min on the fire pour litle water',
 		],
-		id: 4,
+		id: 1596168522450,
 	},
 ];
 
@@ -75,11 +75,14 @@ const renderCard = () => {
 	for (let i = 0; i < recipes.length; i++) {
 		// generate the HTML
 		const myHtml = `
-			<div class="content" data-id="">
+			<div class="content" data-id="${recipes[i].id}">
 				<h3>${recipes[i].title}<h3>
 				<img src="${recipes[i].picture}" alt="">
-				<p>${recipes[i].timing}</p>
-				<p>${recipes[i].difficulty}</p>
+				<div class="detail">
+					<p>${recipes[i].timing}</p>
+					<p>${recipes[i].difficulty}</p>
+				</div>
+				
 				<button class="more-info">More info</button>
 			<div>
 		`;
@@ -87,7 +90,21 @@ const renderCard = () => {
 		container.insertAdjacentHTML('beforeend', myHtml);
 	}
 };
+// Find the button
+
+const handleMoreInfoBtn = event => {
+	if(event.target.matches('button.more-info')) {
+		// Slect the closest element
+		const parent = event.target.closest('');
+		const id = Number(parent.dataset.id);
+		const recipe = recipes.find(singleRecipe => singleRecipe.id === id);
+		// Create a modal in html
+		//call it here
+		openModel(recipe)
+    }
+}
 
 
 const generateButton = document.querySelector('button.generate');
 generateButton.addEventListener('click', renderCard);
+window.addEventListener('click', handleMoreInfoBtn);
