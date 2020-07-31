@@ -4,8 +4,30 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>WKP5</title>
+		<style>
+			.container {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				grid-column-gap: 1.2rem;
+				grid-row-gap: 1rem;
+			}
+			.content {
+				border: 1px solid gray;
+				background-color: rgb(195, 193, 193);
+				padding: 2rem;
+				border-radius: 1rem;
+			}
+			h1 {
+				text-align: center;
+			}
+			img {
+				width: 100%;
+				height: 400px;
+			}
+		</style>
 	</head>
 	<body>
+		<h1>Onja cookbook</h1>
 		<div class="container"></div>
 		<button class="generate">GENERATE RECIPES</button>
 	</body>
