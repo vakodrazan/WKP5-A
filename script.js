@@ -1,4 +1,6 @@
 const container = document.querySelector('.container');
+const outerModal = document.querySelector(".outer-modal");
+const innerModal = document.querySelector(".inner-modal");
 
 const recipes = [
 	{
@@ -79,8 +81,8 @@ const renderCard = () => {
 				<h3>${recipes[i].title}<h3>
 				<img src="${recipes[i].picture}" alt="">
 				<div class="detail">
-					<p>${recipes[i].timing}</p>
-					<p>${recipes[i].difficulty}</p>
+					<p>Timing: ${recipes[i].timing}</p>
+					<p>Difficulty: ${recipes[i].difficulty}</p>
 				</div>
 				
 				<button class="more-info">More info</button>
@@ -103,6 +105,28 @@ const handleMoreInfoBtn = event => {
 		openModel(recipe)
     }
 }
+
+
+// Close the modal
+const closeModal = () => {
+    outerModal.classList.remove('open');
+}
+
+// Listen to the outside of the element to close the modal
+outerModal.addEventListener('click', event => {
+    const isOutside = !event.target.closest('.inner-modal')
+    if (isOutside) {
+        closeModal();
+    }
+});
+
+
+// listen to the escape key to close the modal
+window.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+        closeModal();
+    }
+});
 
 
 const generateButton = document.querySelector('button.generate');
