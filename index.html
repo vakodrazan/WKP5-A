@@ -5,6 +5,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>WKP5</title>
 		<style>
+			html {
+				font-family: Arial, Helvetica, sans-serif;
+				font-size: 1rem;
+			}
 			.container {
 				display: grid;
 				grid-template-columns: repeat(2, 1fr);
@@ -21,6 +25,10 @@
 			}
 			h1 {
 				text-align: center;
+			}
+			span {
+				font-size: 1rem;
+				font-weight: 400;
 			}
 			img {
 				width: 100%;
@@ -63,12 +71,22 @@
 				min-width: 400px;
 				padding: 20px;
 			}
+			form {
+				display: grid;
+				grid-template-columns: 1fr;
+				row-gap: 1rem;
+			}
+			form ul {
+				list-style: none;
+				
+			}
 		</style>
 	</head>
 	<body>
 		<h1>Onja cookbook</h1>
 		<div class="container"></div>
 		<button class="generate">GENERATE RECIPES</button>
+		<button class="addRecipe">Add your recipe</button>
 		<div class="outer-modal">
 			<div class="inner-modal"></div>
 		</div>
