@@ -95,27 +95,30 @@ const renderCard = () => {
 
 // Create a function for the html
 const openModel = (recipe) => {
-
-		const myHtml = `
-			<div class="content">
-				<h3>${recipe.title}<h3>
-				<img src="${recipe.picture}" alt="">
-				<div class="detail">
-					<p>Timing: ${recipe.timing}</p>
-					<p>Difficulty: ${recipe.difficulty}</p>
-				</div>
-				<div class="detail">
-					<div>
-						<p>Steps:</p>
-						<ul>
-							<li>${recipe.steps}</li>
-						</ul>
-					</div>
-					<div></div>
+	const myHtml = `
+		<div class="content">
+			<h3>${recipe.title}<h3>
+			<img src="${recipe.picture}" alt="">
+			<div class="detail">
+				<p>Timing: ${recipe.timing}</p>
+				<p>Difficulty: ${recipe.difficulty}</p>
+			</div>
+			<div class="detail">
 				<div>
-				
+					<p>Steps:</p>
+					<ul>
+						<li>${recipe.steps}</li>
+					</ul>
+				</div>
+				<div>
+					<ul>
+						<li>${recipe.ingredients}</li>
+					</ul>
+				</div>
 			<div>
-		`;
+			
+		<div>
+	`;
 
 	innerModal.innerHTML = myHtml;
 	outerModal.classList.add("open");
