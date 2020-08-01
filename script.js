@@ -180,7 +180,7 @@ window.addEventListener('keydown', (event) => {
     }
 });
 
-
+// Create a form 
 const handleAddBtn = e => {
     const myFormHtml = `
 		<form>
@@ -249,6 +249,7 @@ const handleAddBtn = e => {
 		</form>
     `;
 
+	// Nest it in the modal
     innerModal.innerHTML = myFormHtml;
     outerModal.classList.add('open');
 }
