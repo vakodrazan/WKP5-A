@@ -75,9 +75,30 @@ const renderCard = () => {
 	// check the recipes collection
 
 	for (let i = 0; i < recipes.length; i++) {
+
+		// Loop through the steps array
+		let stepValues = recipes[i].steps;
+		let stepText = "";
+		stepValues.forEach(stepFunction);
+		function stepFunction(value) {
+			stepText += "<li>" + value + "</li>"; 
+		}
+
+		// Loop through the ingredients array
+		let ingredientValues = recipes[i].ingredients;
+		let ingredientText = "";
+		ingredientValues.forEach(ingredientsFunction);
+		function ingredientsFunction(value) {
+			ingredientText += "<li>" + value + "</li>"; 
+		}
+		
 		// generate the HTML
 		const myHtml = `
-			<div class="content" data-id="${recipes[i].id}">
+			<div class="content" 
+				data-id="${recipes[i].id}" 
+				data-step="${stepText}" 
+				data-ingredient="${ingredientText}"
+			>
 				<h3>${recipes[i].title}<h3>
 				<img src="${recipes[i].picture}" alt="">
 				<div class="detail">
@@ -93,11 +114,13 @@ const renderCard = () => {
 	}
 };
 
+
 // Create a function for the html
 const openModel = (recipe) => {
 	const myHtml = `
 		<div class="content">
-			<h3>${recipe.title}<h3>
+			<h3>${recipe.title} <span>by ${recipe.author}</span><h3>
+
 			<img src="${recipe.picture}" alt="">
 			<div class="detail">
 				<p>Timing: ${recipe.timing}</p>
@@ -111,8 +134,9 @@ const openModel = (recipe) => {
 					</ul>
 				</div>
 				<div>
+				<p>Ingredients</p>
 					<ul>
-						<li>${recipe.ingredients}</li>
+						<li>${ingredientText}</li>
 					</ul>
 				</div>
 			<div>
@@ -132,7 +156,6 @@ const handleMoreInfoBtn = event => {
 		const recipe = recipes.find(singleRecipe => singleRecipe.id === id);
 		// Create a modal in html
 		//call it here
-		console.log(recipe);
 		openModel(recipe)
     }
 }
