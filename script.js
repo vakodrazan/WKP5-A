@@ -253,8 +253,12 @@ const handleAddBtn = e => {
     outerModal.classList.add('open');
 }
 
+const handleSubmitBtnn = e => {
+	e.preventDefault();
+	console.log("Hello");
+}
 
-
+window.addEventListener("submit", handleSubmitBtnn);
 addRecipe.addEventListener("click", handleAddBtn);
 generateButton.addEventListener('click', renderCard);
 window.addEventListener('click', handleMoreInfoBtn);
