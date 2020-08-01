@@ -1,6 +1,8 @@
 const container = document.querySelector('.container');
 const outerModal = document.querySelector(".outer-modal");
 const innerModal = document.querySelector(".inner-modal");
+const addRecipe = document.querySelector(".addRecipe");
+const generateButton = document.querySelector('button.generate');
 
 const recipes = [
 	{
@@ -116,7 +118,7 @@ const renderCard = () => {
 
 
 // Create a function for the html
-const openModel = (recipe) => {
+const openModel = recipe => {
 	const myHtml = `
 		<div class="content">
 			<h3>${recipe.title} <span>by ${recipe.author}</span><h3>
@@ -129,15 +131,11 @@ const openModel = (recipe) => {
 			<div class="detail">
 				<div>
 					<p>Steps:</p>
-					<ul>
-						<li>${recipe.steps}</li>
-					</ul>
+					${recipe.steps}
 				</div>
 				<div>
-				<p>Ingredients</p>
-					<ul>
-						<li>${ingredientText}</li>
-					</ul>
+					<p>Ingredients</p>
+					${recipe.ingredients}
 				</div>
 			<div>
 			
@@ -183,6 +181,80 @@ window.addEventListener('keydown', (event) => {
 });
 
 
-const generateButton = document.querySelector('button.generate');
+const handleAddBtn = e => {
+    const myFormHtml = `
+		<form>
+			<label for="title">What's the recipe name</label>
+			<input 
+				type="text" 
+				id="title" 
+				name="title" 
+				placeholder="Your recipe name" value="Eggs"
+				required
+			/>
+			<label for="picture">Picture of the result (URL)</label>
+			<input 
+				type="url" 
+				id="picture" 
+				name="picture" 
+				placeholder="Enter the url of your picture"
+				value="https://bit.ly/2ZXyiKI"
+				required
+			/>
+
+			<label for="author">Who's the cook?</label>
+			<input
+				type="text"
+				id="author"
+				name="author"
+				placeholder="Enter your name here"
+				value="Noeline"
+				required
+			/>
+
+			<label for="difficulty">What's the difficulty?</label>
+			<select name="difficulty" id="difficulty">
+				<option value="easy">Easy</option>
+				<option value="medium">Medium</option>
+				<option value="hard">Hard</option>
+			</select>
+
+			<label for="timing">How much time does it take?</label>
+			<select name="timing" id="timing" class="select-timing">
+				<option value="less-than-15min">Less than 15 minutes</option>
+				<option value="15min">15 minutes</option>
+				<option value="30min">30 minutes</option>
+				<option value="45min">45 minutes</option>
+				<option value="60min">60 minutes</option>
+				<option value="more-than-1h">More than 1 hours</option>
+			</select>
+
+			<label for="ingredient1">Ingredients</label>
+			<ul id="ingredientList">
+				<li>
+					<input type="text" id="ingredient1" value="ingredient 1" required/>
+				</li>
+			</ul>
+			<button type="button" class="addIngredient">Add a new ingredient to the list</button>
+			
+			<label for="step1">Steps</label>
+			<ul id="stepList">
+				<li>
+					<input type="text" id="step1" value="Step 1" required/>
+				</li>
+			</ul>
+			<button type="button" class="addStep">Add a new steps to the list</button>
+
+			<button class="addRecipe" type="submit">Add your recipe</button>
+		</form>
+    `;
+
+    innerModal.innerHTML = myFormHtml;
+    outerModal.classList.add('open');
+}
+
+
+
+addRecipe.addEventListener("click", handleAddBtn);
 generateButton.addEventListener('click', renderCard);
 window.addEventListener('click', handleMoreInfoBtn);
