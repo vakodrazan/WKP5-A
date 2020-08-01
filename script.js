@@ -92,16 +92,44 @@ const renderCard = () => {
 		container.insertAdjacentHTML('beforeend', myHtml);
 	}
 };
-// Find the button
+
+// Create a function for the html
+const openModel = (recipe) => {
+
+		const myHtml = `
+			<div class="content">
+				<h3>${recipe.title}<h3>
+				<img src="${recipe.picture}" alt="">
+				<div class="detail">
+					<p>Timing: ${recipe.timing}</p>
+					<p>Difficulty: ${recipe.difficulty}</p>
+				</div>
+				<div class="detail">
+					<div>
+						<p>Steps:</p>
+						<ul>
+							<li>${recipe.steps}</li>
+						</ul>
+					</div>
+					<div></div>
+				<div>
+				
+			<div>
+		`;
+
+	innerModal.innerHTML = myHtml;
+	outerModal.classList.add("open");
+}
 
 const handleMoreInfoBtn = event => {
 	if(event.target.matches('button.more-info')) {
 		// Slect the closest element
-		const parent = event.target.closest('');
+		const parent = event.target.closest('.content');
 		const id = Number(parent.dataset.id);
 		const recipe = recipes.find(singleRecipe => singleRecipe.id === id);
 		// Create a modal in html
 		//call it here
+		console.log(recipe);
 		openModel(recipe)
     }
 }
