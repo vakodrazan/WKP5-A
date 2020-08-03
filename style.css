@@ -1,0 +1,54 @@
+main {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+article {
+    padding: 1.8rem;
+    display: grid;
+    grid-gap: 20px;
+}
+
+article > ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    list-style: none;
+    padding: 0;
+}
+
+article button {
+    padding: 0.5rem;
+}
+
+img {
+    max-width: 100%;
+}
+
+
+.outerModal {
+    display: grid;
+    place-items: center center;
+    background-color: hsla(0, 0%, 0%, 0.7);
+    pointer-events: none;
+    opacity: 0;
+    position: fixed;
+
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow: scroll;
+}
+
+.outerModal.open {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.innerModal {
+    background-color: white;
+    min-height: 400px;
+    min-width: 400px;
+    padding: 20px;
+}
