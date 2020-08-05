@@ -77,30 +77,10 @@ const renderCard = () => {
 	// check the recipes collection
 
 	for (let i = 0; i < recipes.length; i++) {
-
-		// Loop through the steps array
-		let stepValues = recipes[i].steps;
-		let stepText = "";
-		stepValues.forEach(stepFunction);
-		function stepFunction(value) {
-			stepText += "<li>" + value + "</li>"; 
-		}
-
-		// Loop through the ingredients array
-		let ingredientValues = recipes[i].ingredients;
-		let ingredientText = "";
-		ingredientValues.forEach(ingredientsFunction);
-		function ingredientsFunction(value) {
-			ingredientText += "<li>" + value + "</li>"; 
-		}
-		
 		// generate the HTML
 		const myHtml = `
 			<div class="content" 
-				data-id="${recipes[i].id}" 
-				data-step="${stepText}" 
-				data-ingredient="${ingredientText}"
-			>
+				data-id="${recipes[i].id}" >
 				<h3>${recipes[i].title}<h3>
 				<img src="${recipes[i].picture}" alt="">
 				<div class="detail">
@@ -128,16 +108,14 @@ const openModel = recipe => {
 				<p>Timing: ${recipe.timing}</p>
 				<p>Difficulty: ${recipe.difficulty}</p>
 			</div>
-			<div class="detail">
-				<div>
-					<p>Steps:</p>
-					${recipe.steps}
-				</div>
-				<div>
-					<p>Ingredients</p>
-					${recipe.ingredients}
-				</div>
-			<div>
+			<ol>
+				Steps:
+				${recipe.steps.map(step => `<li>${step}</li>`).join("")}
+			</ol>
+			<ul>
+				Ingredients:
+				${recipe.ingredients.map(ingredient => `<li>${ingredient}</li>`).join("")}
+			</ul>
 			
 		<div>
 	`;
